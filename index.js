@@ -85,3 +85,5 @@ function playGame() {
         console.log("Bro how does this even happen?")
     }
 }
+
+playGame();
