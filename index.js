@@ -96,3 +96,10 @@ btnPlay.addEventListener('click', () => {
     const playerChooseScreen = document.querySelector(".playerChooseScreen");
     playerChooseScreen.style.display = 'block';
 })
+
+const playerOptions = document.querySelectorAll(".playerChooseOptions>div");
+playerOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        console.log(option.lastElementChild.innerHTML)
+    })
+});
