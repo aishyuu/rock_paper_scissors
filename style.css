@@ -16,13 +16,15 @@
 
 body {
     background-color: #55d6BE;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 footer {
     background-color: #136F63;
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    margin-top: auto;
     height: 2.5rem;
     font-size: 1.5rem;
     text-align: center;
