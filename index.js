@@ -1,7 +1,7 @@
-// function getComputerChoice(){
-//     decision = ['rock', 'paper', 'scissors']
-//     return(decision[Math.floor(Math.random()*3)])
-// }
+function getComputerChoice(){
+    decision = ['rock', 'paper', 'scissors']
+    return(decision[Math.floor(Math.random()*3)])
+}
 
 // function getPlayerChoice() {
 //     let lock = true;
@@ -100,6 +100,8 @@ btnPlay.addEventListener('click', () => {
 const playerOptions = document.querySelectorAll(".playerChooseOptions>div");
 playerOptions.forEach(option => {
     option.addEventListener('click', () => {
-        console.log(option.lastElementChild.innerHTML)
+        console.log(option.lastElementChild.innerHTML.toLowerCase());
+        let computerChoice = getComputerChoice();
+        console.log(computerChoice);
     })
 });

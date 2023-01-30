@@ -97,7 +97,7 @@ a {
     transition: 0.3s;
 }
 
-#Rock, #Paper, #Scissors {
+#rock, #paper, #scissors {
     background-color: #A4036F;
     margin: 20px auto;
     border: 3px solid black;
