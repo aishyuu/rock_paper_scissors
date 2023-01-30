@@ -87,3 +87,12 @@
 // }
 
 // playGame();
+
+const btnPlay = document.querySelector("#btnPlay");
+btnPlay.addEventListener('click', () => {
+    const titleScreen = document.querySelector(".titleScreen");
+    titleScreen.style.display = 'none';
+
+    const playerChooseScreen = document.querySelector(".playerChooseScreen");
+    playerChooseScreen.style.display = 'block';
+})
