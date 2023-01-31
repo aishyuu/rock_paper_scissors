@@ -97,10 +97,13 @@ btnPlay.addEventListener('click', () => {
     playerChooseScreen.style.display = 'block';
 })
 
+// We want to make each option be clickable and also give their respective option in lower case.
 const playerOptions = document.querySelectorAll(".playerChooseOptions>div");
 playerOptions.forEach(option => {
     option.addEventListener('click', () => {
         console.log(option.lastElementChild.innerHTML.toLowerCase());
+
+        //We want to grab the computer choice as well!
         let computerChoice = getComputerChoice();
         console.log(computerChoice);
     })
