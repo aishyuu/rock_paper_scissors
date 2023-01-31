@@ -15,35 +15,35 @@ function getComputerChoice(){
 //     }
 // }
 
-// function findWinner(computer, player) {
-//     // 1 == Computer win
-//     // 0 == Player win
-//     // 2 == Tie (give both a point)
+function findWinner(computer, player) {
+    // 1 == Computer win
+    // 0 == Player win
+    // 2 == Tie (give both a point)
 
-//     console.log(`Computer: ${computer}`);
-//     console.log(`Player: ${player}`)
+    console.log(`Computer: ${computer}`);
+    console.log(`Player: ${player}`)
 
-//     if(player === computer) {
-//         return (2);
-//     }
-//     switch (player) {
-//         case 'rock':
-//             if(computer == 'paper') {
-//                 return(1);
-//             }
-//             return (0);
-//         case 'paper':
-//             if(computer == 'scissors') {
-//                 return (1);
-//             }
-//             return (0);
-//         case 'scissors':
-//             if(computer == 'rock') {
-//                 return (1);
-//             }
-//             return(0);
-//     }
-// }
+    if(player === computer) {
+        return (2);
+    }
+    switch (player) {
+        case 'rock':
+            if(computer == 'paper') {
+                return(1);
+            }
+            return (0);
+        case 'paper':
+            if(computer == 'scissors') {
+                return (1);
+            }
+            return (0);
+        case 'scissors':
+            if(computer == 'rock') {
+                return (1);
+            }
+            return(0);
+    }
+}
 
 // function playRound() {
 //     let computerChoice = getComputerChoice();
@@ -101,10 +101,60 @@ btnPlay.addEventListener('click', () => {
 const playerOptions = document.querySelectorAll(".playerChooseOptions>div");
 playerOptions.forEach(option => {
     option.addEventListener('click', () => {
-        console.log(option.lastElementChild.innerHTML.toLowerCase());
+        const playerChoice = option.lastElementChild.innerHTML.toLowerCase();
 
         //We want to grab the computer choice as well!
         let computerChoice = getComputerChoice();
-        console.log(computerChoice);
+
+        let playerScore = Number(document.querySelector(".score").innerHTML[0]);
+        let computerScore = Number(document.querySelector(".score").innerHTML[4]);
+
+        const roundResult = findWinner(computerChoice, playerChoice)
+        const winnerText = document.querySelector('.winnerText');
+
+        switch(roundResult) {
+            case 0:
+                playerScore++;
+                winnerText.innerHTML = "Player wins!";
+                break;
+            case 1:
+                computerScore++;
+                winnerText.innerHTML = "Computer wins!";
+                break;
+            case 2:
+                winnerText.innerHTML = "It's a tie!";
+                break;
+        }
+
+        const scoreBoard = document.querySelector(".score");
+        scoreBoard.innerHTML = `${playerScore} - ${computerScore}`
+
+        if(playerScore == 5) {
+            const playerChooseOptions = document.querySelector(".playerChooseOptions");
+            playerChooseOptions.style.display = "none";
+
+            const playAgain = document.querySelector(".playAgain");
+            playAgain.style.display = "flex";
+        } else if (computerScore == 5) {
+            const playerChooseOptions = document.querySelector(".playerChooseOptions");
+            playerChooseOptions.style.display = "none";
+
+            const playAgain = document.querySelector(".playAgain");
+            playAgain.style.display = "flex";
+        }
     })
+});
+
+const playAgainButton = document.querySelector(".playAgain");
+playAgainButton.addEventListener('click', () => {
+    //Reset it to the previous state
+    playAgainButton.style.display = 'none';
+    const playerChooseScreen = document.querySelector(".playerChooseOptions");
+    playerChooseScreen.style.display = "flex";
+
+    const score = document.querySelector(".score");
+    score.innerHTML = "0 - 0";
+
+    const winnerText = document.querySelector(".winnerText");
+    winnerText.innerHTML = ""
 });
